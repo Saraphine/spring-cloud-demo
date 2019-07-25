@@ -1,0 +1,19 @@
+spring:
+  application:
+    # 定义Spring Boot应用的名字
+    # 如果定义了这个，就不需要定义eureka.instance.appname，优先级最高
+    name: RegistryCenter
+# 对Eureka配置
+eureka:
+  instance:
+    # 这个appname会用于服务注册，相同名字的多个服务会被认为是一个集群的副本，
+    # 如果未定义spring.application.name，则使用这个名字
+    appname: registryCenter
+    # 这个名字是Eureka中用于注册服务分组的，也可以不进行配置
+    app-group-name: registryCenterCluster
+  client:
+    # Eureka Server默认会将自己也注册到注册中心上，因此，当使用单点时，需要禁用注册和缓存
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    renewal-percent-threshold: 0.49
